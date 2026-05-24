@@ -1,0 +1,18 @@
+{
+  "case_id": "zero-guard-warrior-lv106",
+  "category": "zero_guard",
+  "description": "warrior lv106 で HP maximize, 条件なし。必ず 1 件以上の結果が返ること。",
+  "input": {
+    "class": "warrior",
+    "level": 106,
+    "conditions": [],
+    "scoring": { "maximize": { "hp": 1 } },
+    "fixed_items": {},
+    "search_params": { "beam_width": 50, "max_candidates_per_slot": 40, "result_limit": 10 }
+  },
+  "expect": {
+    "min_results": 1,
+    "conditions_satisfied": true,
+    "score_descending": true
+  }
+}

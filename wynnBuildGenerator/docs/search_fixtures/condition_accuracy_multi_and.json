@@ -1,0 +1,25 @@
+{
+  "case_id": "condition-accuracy-multi-and",
+  "category": "condition_accuracy",
+  "description": "warrior lv106, hp >= 15000 AND sdRaw >= 100 の複合 AND 条件。返却された全ビルドが両条件を満たすこと。",
+  "input": {
+    "class": "warrior",
+    "level": 106,
+    "conditions": [
+      { "key": "hp", "op": ">=", "value": 15000 },
+      { "key": "sdRaw", "op": ">=", "value": 100 }
+    ],
+    "scoring": { "maximize": { "hp": 1, "sdRaw": 2 } },
+    "fixed_items": {},
+    "search_params": { "beam_width": 50, "max_candidates_per_slot": 40, "result_limit": 10 }
+  },
+  "expect": {
+    "min_results": 1,
+    "conditions_satisfied": true,
+    "score_descending": true,
+    "stat_constraint": {
+      "hp": { "op": ">=", "value": 15000 },
+      "sdRaw": { "op": ">=", "value": 100 }
+    }
+  }
+}

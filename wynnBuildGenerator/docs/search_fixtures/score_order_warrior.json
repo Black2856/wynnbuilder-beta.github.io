@@ -1,0 +1,18 @@
+{
+  "case_id": "score-order-warrior-hp",
+  "category": "score_order",
+  "description": "warrior lv106, HP maximize。返却結果のスコアが降順になっていること。",
+  "input": {
+    "class": "warrior",
+    "level": 106,
+    "conditions": [],
+    "scoring": { "maximize": { "hp": 1 } },
+    "fixed_items": {},
+    "search_params": { "beam_width": 50, "max_candidates_per_slot": 40, "result_limit": 10 }
+  },
+  "expect": {
+    "min_results": 2,
+    "score_descending": true,
+    "comment": "results[i].score >= results[i+1].score for all i"
+  }
+}

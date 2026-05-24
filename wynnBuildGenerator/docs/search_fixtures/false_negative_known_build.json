@@ -1,0 +1,39 @@
+{
+  "case_id": "false-negative-known-build",
+  "category": "false_negative",
+  "description": "既知の HP-最大・ゼロ要求ビルド (HP 24310) を warrior lv106 で検索したとき、\n広い探索幅では候補に含まれること。\nnote: ゼロ要求アイテム (Ornate Shadow Cowl 等) は sp_valid=True だが,\nHP スコアでは高要求ビルド (26835) に劣る。固定アイテム指定や条件付き検索で必ず返ることを確認する。",
+  "input": {
+    "class": "warrior",
+    "level": 106,
+    "conditions": [],
+    "scoring": { "maximize": { "hp": 1 } },
+    "fixed_items": {
+      "helmet": "Ornate Shadow Cowl",
+      "chestplate": "Leo",
+      "leggings": "Ornate Shadow Cover",
+      "boots": "Statue"
+    },
+    "search_params": { "beam_width": 50, "max_candidates_per_slot": 40, "result_limit": 10 }
+  },
+  "expect": {
+    "min_results": 1,
+    "conditions_satisfied": true,
+    "score_descending": true,
+    "required_builds": [
+      {
+        "equipment": [
+          "Ornate Shadow Cowl",
+          "Leo",
+          "Ornate Shadow Cover",
+          "Statue",
+          null,
+          null,
+          null,
+          null
+        ],
+        "comment": "4 スロット固定; 全て helmet[0]/chest[1]/legs[2]/boots[3] に一致すること",
+        "must_appear_in_top_n": 10
+      }
+    ]
+  }
+}

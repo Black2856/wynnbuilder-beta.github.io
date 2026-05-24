@@ -1,0 +1,62 @@
+{
+  "case_id": "zero-guard-all-classes-lv106",
+  "category": "zero_guard",
+  "description": "全クラス (warrior/archer/mage/assassin/shaman) lv106 で HP maximize, 条件なし。各クラスで 1 件以上の結果が返ること。",
+  "test_cases": [
+    {
+      "input": {
+        "class": "warrior",
+        "level": 106,
+        "conditions": [],
+        "scoring": { "maximize": { "hp": 1 } },
+        "fixed_items": {},
+        "search_params": { "beam_width": 20, "max_candidates_per_slot": 20, "result_limit": 5 }
+      },
+      "expect": { "min_results": 1, "score_descending": true }
+    },
+    {
+      "input": {
+        "class": "archer",
+        "level": 106,
+        "conditions": [],
+        "scoring": { "maximize": { "hp": 1 } },
+        "fixed_items": {},
+        "search_params": { "beam_width": 20, "max_candidates_per_slot": 20, "result_limit": 5 }
+      },
+      "expect": { "min_results": 1, "score_descending": true }
+    },
+    {
+      "input": {
+        "class": "mage",
+        "level": 106,
+        "conditions": [],
+        "scoring": { "maximize": { "hp": 1 } },
+        "fixed_items": {},
+        "search_params": { "beam_width": 20, "max_candidates_per_slot": 20, "result_limit": 5 }
+      },
+      "expect": { "min_results": 1, "score_descending": true }
+    },
+    {
+      "input": {
+        "class": "assassin",
+        "level": 106,
+        "conditions": [],
+        "scoring": { "maximize": { "hp": 1 } },
+        "fixed_items": {},
+        "search_params": { "beam_width": 20, "max_candidates_per_slot": 20, "result_limit": 5 }
+      },
+      "expect": { "min_results": 1, "score_descending": true }
+    },
+    {
+      "input": {
+        "class": "shaman",
+        "level": 106,
+        "conditions": [],
+        "scoring": { "maximize": { "hp": 1 } },
+        "fixed_items": {},
+        "search_params": { "beam_width": 20, "max_candidates_per_slot": 20, "result_limit": 5 }
+      },
+      "expect": { "min_results": 1, "score_descending": true }
+    }
+  ]
+}

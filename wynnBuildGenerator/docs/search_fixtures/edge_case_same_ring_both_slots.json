@@ -1,0 +1,27 @@
+{
+  "case_id": "edge-case-same-ring-both-slots",
+  "category": "edge_case",
+  "description": "ring1 と ring2 に同一アイテムを固定した場合の検索。ring スロットは同一アイテムを 2 つ使用可能であることを確認する。",
+  "input": {
+    "class": "warrior",
+    "level": 106,
+    "conditions": [],
+    "scoring": { "maximize": { "hp": 1 } },
+    "fixed_items": {
+      "ring1": "Diamond Solar Ring",
+      "ring2": "Diamond Solar Ring"
+    },
+    "search_params": { "beam_width": 50, "max_candidates_per_slot": 40, "result_limit": 10 }
+  },
+  "expect": {
+    "min_results": 1,
+    "required_builds": [
+      {
+        "equipment_slot_4": "Diamond Solar Ring",
+        "equipment_slot_5": "Diamond Solar Ring",
+        "comment": "ring1 (slot4) と ring2 (slot5) が同一アイテムであること",
+        "must_appear_in_top_n": 10
+      }
+    ]
+  }
+}

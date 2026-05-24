@@ -1,0 +1,85 @@
+body {
+  min-height: 100vh;
+}
+
+.card {
+  border-radius: 6px;
+}
+
+.scoring-row, .condition-row, .fixed-row {
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+  padding: 6px 8px;
+  margin-bottom: 6px;
+}
+
+.result-card {
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  background: rgba(255,255,255,0.04);
+}
+
+.result-rank {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #adb5bd;
+}
+
+.result-score {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #4fc3f7;
+}
+
+.stat-badge {
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: rgba(255,255,255,0.1);
+  margin: 2px;
+  display: inline-block;
+}
+
+.item-slot {
+  font-size: 0.8rem;
+  color: #ced4da;
+}
+
+.slot-label {
+  font-size: 0.7rem;
+  color: #6c757d;
+  margin-right: 4px;
+}
+
+.btn-xs {
+  font-size: 0.75rem;
+}
+
+select option {
+  background: #212529;
+}
+
+#status-bar.searching {
+  background: rgba(13, 110, 253, 0.15);
+  border-color: rgba(13, 110, 253, 0.4);
+  color: #90caf9;
+}
+
+#status-bar.success {
+  background: rgba(25, 135, 84, 0.15);
+  border-color: rgba(25, 135, 84, 0.4);
+  color: #a8d5b5;
+}
+
+#status-bar.error {
+  background: rgba(220, 53, 69, 0.15);
+  border-color: rgba(220, 53, 69, 0.4);
+  color: #f08080;
+}
+
+.conditions-met-yes { color: #66bb6a; }
+.conditions-met-no  { color: #ef5350; }
+.sp-valid-yes { color: #66bb6a; }
+.sp-valid-no  { color: #ef5350; }

@@ -1,0 +1,19 @@
+{
+  "case_id": "condition-accuracy-hp-ge-20000",
+  "category": "condition_accuracy",
+  "description": "warrior lv106, hp >= 20000 条件。返却された全ビルドの hp が 20000 以上であること。",
+  "input": {
+    "class": "warrior",
+    "level": 106,
+    "conditions": [{ "key": "hp", "op": ">=", "value": 20000 }],
+    "scoring": { "maximize": { "hp": 1 } },
+    "fixed_items": {},
+    "search_params": { "beam_width": 50, "max_candidates_per_slot": 40, "result_limit": 10 }
+  },
+  "expect": {
+    "min_results": 1,
+    "conditions_satisfied": true,
+    "score_descending": true,
+    "stat_constraint": { "hp": { "op": ">=", "value": 20000 } }
+  }
+}

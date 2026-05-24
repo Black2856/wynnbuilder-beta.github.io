@@ -1,0 +1,19 @@
+{
+  "case_id": "edge-case-tight-condition-zero-results",
+  "category": "edge_case",
+  "description": "hp >= 999999 という現実的に不可能な条件。結果が 0 件で返ること、かつタイムアウトしないこと。",
+  "input": {
+    "class": "warrior",
+    "level": 106,
+    "conditions": [{ "key": "hp", "op": ">=", "value": 999999 }],
+    "scoring": { "maximize": { "hp": 1 } },
+    "fixed_items": {},
+    "search_params": { "beam_width": 50, "max_candidates_per_slot": 40, "result_limit": 10 }
+  },
+  "expect": {
+    "min_results": 0,
+    "max_results": 0,
+    "must_complete": true,
+    "comment": "条件が満たせないとき 0 件を返すのが正しい動作。フリーズや例外を発生させない。"
+  }
+}

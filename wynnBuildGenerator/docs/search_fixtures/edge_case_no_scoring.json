@@ -1,0 +1,18 @@
+{
+  "case_id": "edge-case-no-scoring",
+  "category": "edge_case",
+  "description": "スコア設定なし (scoring = {}) の場合の検索。スコアが全て 0.0 になるが、0 件にならず結果が返ること。",
+  "input": {
+    "class": "warrior",
+    "level": 106,
+    "conditions": [],
+    "scoring": {},
+    "fixed_items": {},
+    "search_params": { "beam_width": 20, "max_candidates_per_slot": 20, "result_limit": 5 }
+  },
+  "expect": {
+    "min_results": 1,
+    "score_descending": true,
+    "comment": "スコアが全 0.0 になる場合でも beam search が候補を返し、結果が生成されること"
+  }
+}

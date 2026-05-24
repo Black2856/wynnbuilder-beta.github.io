@@ -1,0 +1,27 @@
+{
+  "case_id": "score-monotonicity-warrior-lv106",
+  "category": "score_monotonicity",
+  "description": "warrior lv106, HP + sdRaw スコア。beam_width / max_candidates_per_slot を段階的に広げたとき top score が単調増加 (または維持) されること。旧実装で実際に発生した問題 (候補数増加でスコア低下) の regression テスト。",
+  "input_base": {
+    "class": "warrior",
+    "level": 106,
+    "conditions": [],
+    "scoring": { "maximize": { "hp": 1, "sdRaw": 2 } },
+    "fixed_items": {}
+  },
+  "param_steps": [
+    { "beam_width": 20, "max_candidates_per_slot": 20, "result_limit": 5 },
+    { "beam_width": 50, "max_candidates_per_slot": 40, "result_limit": 5 },
+    { "beam_width": 100, "max_candidates_per_slot": 80, "result_limit": 5 }
+  ],
+  "expect": {
+    "top_score_monotone": true,
+    "comment": "各ステップの top_score は前ステップ以上でなければならない (広げると悪化しない)"
+  },
+  "known_scores": {
+    "comment": "実測値 (2026-05-24 時点); regression で使用",
+    "beam20_maxslot20": 23721.0,
+    "beam50_maxslot40": 27231.0,
+    "beam100_maxslot80": 28346.0
+  }
+}

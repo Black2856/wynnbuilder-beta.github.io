@@ -1,0 +1,25 @@
+{
+  "case_id": "false-negative-fixed-helmet",
+  "category": "false_negative",
+  "description": "ヘルメットを Ornate Shadow Cowl に固定した warrior lv106 検索。\n固定アイテムを含むビルドが必ず返ること (pruning が固定アイテムのビルドを落とさないことを確認)。",
+  "input": {
+    "class": "warrior",
+    "level": 106,
+    "conditions": [],
+    "scoring": { "maximize": { "hp": 1 } },
+    "fixed_items": { "helmet": "Ornate Shadow Cowl" },
+    "search_params": { "beam_width": 50, "max_candidates_per_slot": 40, "result_limit": 10 }
+  },
+  "expect": {
+    "min_results": 1,
+    "conditions_satisfied": true,
+    "score_descending": true,
+    "required_builds": [
+      {
+        "equipment_slot_0": "Ornate Shadow Cowl",
+        "comment": "ヘルメットスロットが固定アイテムと一致すること",
+        "must_appear_in_top_n": 10
+      }
+    ]
+  }
+}
