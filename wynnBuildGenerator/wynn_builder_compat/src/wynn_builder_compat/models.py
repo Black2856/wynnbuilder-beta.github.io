@@ -6,17 +6,6 @@ from dataclasses import dataclass, field
 from typing import Any
 
 
-@dataclass(frozen=True)
-class CompatItem:
-    """Small Python stand-in for a Wynnbuilder Item.statMap-like object."""
-
-    name: str
-    stat_map: dict[str, Any]
-
-    def get(self, key: str, default: Any = None) -> Any:
-        return self.stat_map.get(key, default)
-
-
 @dataclass
 class CraftPreview:
     """Result shape for a crafted item preview."""

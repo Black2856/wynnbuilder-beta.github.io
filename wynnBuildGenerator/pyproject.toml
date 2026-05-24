@@ -16,7 +16,7 @@ dev = [
 
 [tool.pytest.ini_options]
 pythonpath = ["wynn_builder_compat/src", "python"]
-testpaths = ["wynn_builder_compat/tests"]
+testpaths = ["wynn_builder_compat/tests", "python/tests"]
 
 [tool.setuptools.packages.find]
 where = ["wynn_builder_compat/src", "python"]

@@ -1,6 +1,6 @@
 # Maintenance Prompt
 
-最終更新: 2026-05-23
+最終更新: 2026-05-24
 
 ## 目的
 
@@ -23,6 +23,7 @@ Hard requirements:
 
 - Wynnbuilder JavaScript is the source of truth.
 - Python code must not become an independent formula source.
+- `wynn_builder_compat` is strictly for porting Wynnbuilder JS logic. Every file here must have a corresponding JS source function listed in `FORMULA_MAP.md`. Generator-specific logic (scoring, condition evaluation, beam search, NumPy evaluator) belongs in `wynnBuildGenerator/python/search/`, not here.
 - Every ported formula needs JS/Python parity coverage.
 - Do not optimize by changing behavior unless parity tests prove the output is unchanged.
 - For crafted search, preserve edge cases involving positive boosters, negative boosters, durability, and condition/score tradeoffs.
@@ -53,6 +54,10 @@ For performance changes:
 - Measure candidate generation, placement optimization, build evaluation, and parity validation separately.
 - Prefer cache, vectorization, batch evaluation, and lane stability before hard pruning.
 - Hard pruning is allowed only when a benchmark corpus proves it does not remove expected top candidates.
+- The search engine uses a two-layer evaluator: NumPy vectorized pruning (approximate, no set bonus/skillpoints) and the parity-tested final evaluator (`build_stat_map()` + `calculate_skillpoints()`). Do not merge these layers.
+- NumPy pruning evaluator lives in `wynnBuildGenerator/python/search/numpy_evaluator.py`. Final evaluator uses `wynn_builder_compat` directly.
+- Final evaluation is parallelized with `ProcessPoolExecutor`. Worker count defaults to `os.cpu_count()`. Do not apply multiprocessing to the beam expansion loop itself.
+- After changing the pruning evaluator, run benchmarks to confirm that top candidates are not dropped compared to final evaluator results.
 
 Expected final response after maintenance:
 
@@ -67,5 +72,5 @@ Expected final response after maintenance:
 Use this shorter prompt when context is limited:
 
 ```text
-Maintain wynnBuildGenerator's Python compatibility engine. Wynnbuilder JS is the source of truth. Read wynn_builder_compat/docs/PORTING_STRATEGY.md, wynn_builder_compat/docs/PARITY_TESTING.md, and wynn_builder_compat/docs/FORMULA_MAP.md. Port only the required JS logic, add JS/Python parity fixtures, and fix Python until parity passes. For crafted search, preserve positive booster, negative booster, durability, and condition/score tradeoff cases. Do not let larger candidate caps lower benchmark top scores. Document findings in docs/.
+Maintain wynnBuildGenerator's Python compatibility engine. Wynnbuilder JS is the source of truth. Read wynn_builder_compat/docs/PORTING_STRATEGY.md, wynn_builder_compat/docs/PARITY_TESTING.md, and wynn_builder_compat/docs/FORMULA_MAP.md. Port only the required JS logic into wynn_builder_compat/ (every file must have a JS source in FORMULA_MAP.md). Generator-specific logic (scoring, conditions, beam search, NumPy evaluator) belongs in python/search/, not wynn_builder_compat/. Add JS/Python parity fixtures and fix Python until parity passes. For crafted search, preserve positive booster, negative booster, durability, and condition/score tradeoff cases. Do not let larger candidate caps lower benchmark top scores. Document findings in docs/.
 ```
